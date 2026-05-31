@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>GST Bill Calculator</title>
+
+    <style>
+
+        body{
+            font-family: Arial;
+            text-align:center;
+            margin-top:50px;
+        }
+
+        h1{
+            color:darkblue;
+            font-size:45px;
+        }
+
+        form{
+            font-size:25px;
+        }
+
+        input{
+            font-size:22px;
+            padding:8px;
+            margin:10px;
+        }
+
+        button{
+            font-size:22px;
+            padding:10px 20px;
+            background-color:green;
+            color:white;
+            border:none;
+            border-radius:5px;
+        }
+
+        h2{
+            color:red;
+            font-size:30px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>GST Bill Calculator</h1>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <label>Enter Price:</label>
+
+        <input type="number" name="price" required>
+
+        <br><br>
+
+        <label>Enter GST Percentage:</label>
+
+        <input type="number" name="gst" required>
+
+        <br><br>
+
+        <button type="submit">Calculate Bill</button>
+
+    </form>
+
+    {% if total %}
+
+        <h2>GST Amount = ₹ {{ gst_amount }}</h2>
+
+        <h2>Total Bill Amount = ₹ {{ total }}</h2>
+
+    {% endif %}
+
+</body>
+</html>
